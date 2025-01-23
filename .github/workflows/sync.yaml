@@ -1,10 +1,10 @@
 name: Release
 
 on:
-  schedule:
+  #schedule:
     #schedule build every night
     # - cron: "0/10 * * * *"
-    - cron: "0 1 * * *"
+    # - cron: "0 1 * * *"
   push:
     branches: [ develop ]
 
