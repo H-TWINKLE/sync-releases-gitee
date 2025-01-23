@@ -1,0 +1,30 @@
+name: Release
+
+on:
+  schedule:
+    #schedule build every night
+    # - cron: "0/10 * * * *"
+    - cron: "0 1 * * *"
+  push:
+    branches: [ develop ]
+
+#on:
+#  push:
+#    branches: [ master ]
+
+jobs:
+  update:
+    name: Update build status
+    runs-on: ubuntu-20.04
+    steps:
+      - name: sync github release
+        id: create_release
+        uses: h-twinkle/sync-action@master
+        with:
+          debug: false
+          gitee_owner: Htwinkle
+          gitee_repo: htwinkle.cn.app
+          gitee_token: ${{ secrets.gitee_token }}
+          github_owner: H-TWINKLE
+          github_repo: htwinkle.cn.app
+          gitee_upload_retry_times: 3
